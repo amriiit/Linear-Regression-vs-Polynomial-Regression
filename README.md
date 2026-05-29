@@ -18,7 +18,7 @@ The goal is to compare the performance of a standard Multiple Linear Regression 
 * Gradient Descent Optimization
 * Z-Score Feature Scaling
 * Cost Function Implementation
-* Gradient Computation
+* Gradient Computationhttps://github.com/amriiit/Linear-Regression-vs-Polynomial-Regression/blob/main/README.md
 * Feature Engineering
 * Polynomial Regression
 * Model Cost Comparison
@@ -39,9 +39,24 @@ The goal is to compare the performance of a standard Multiple Linear Regression 
 * Compared linear and polynomial regression models
 * Visualized model training and feature relationships
 
-## Future Improvements
+## Results
 
-* Higher-degree polynomial features
-* Train/Test split
-* Model evaluation metrics (R² Score, MAE, RMSE)
-* Comparison with Scikit-Learn implementation
+| Model                      | Final Cost |
+| -------------------------- | ---------- |
+| Multiple Linear Regression | 486.89     |
+| Polynomial Regression      | 107.51     |
+
+### Feature Comparison
+
+| Model                 | Number of Features |
+| --------------------- | ------------------ |
+| Linear Regression     | 3                  |
+| Polynomial Regression | 4                  |
+
+### Observation
+
+A polynomial feature (`Marketing Spend²`) was added through feature engineering.
+
+The Polynomial Regression model achieved a final cost of **107.51** compared to **486.89** for the standard Multiple Linear Regression model.
+
+This represents an improvement of approximately **77.9%**, showing that the engineered polynomial feature helped the model capture nonlinear relationships between marketing spend and startup profit more effectively.
