@@ -60,3 +60,29 @@ A polynomial feature (`Marketing Spend²`) was added through feature engineering
 The Polynomial Regression model achieved a final cost of **107.51** compared to **486.89** for the standard Multiple Linear Regression model.
 
 This represents an improvement of approximately **77.9%**, showing that the engineered polynomial feature helped the model capture nonlinear relationships between marketing spend and startup profit more effectively.
+
+## Visualizations
+
+### Cost Comparison
+
+![Cost Comparison](images/cost_comparison.png)
+
+This graph shows how the cost function decreases during training for both models. The Polynomial Regression model converges to a significantly lower cost than the Linear Regression model, indicating a better fit to the dataset.
+
+### Marketing Spend vs Profit
+
+![Marketing Spend vs Profit](images/marketing_vs_profit.png)
+
+This scatter plot visualizes the relationship between marketing expenditure and startup profit. A positive correlation can be observed, suggesting that higher marketing investments generally lead to increased profits.
+
+### Team Size vs Profit
+
+![Team Size vs Profit](images/team_size_vs_profit.png)
+
+This graph illustrates how startup profit changes with team size. Larger teams tend to be associated with higher profits, although the relationship is not perfectly linear.
+
+### Years Active vs Profit
+
+![Years Active vs Profit](images/years_active_vs_profit.png)
+
+This visualization shows the relationship between company age and profit. Startups that have operated for more years generally demonstrate higher profitability due to accumulated experience and market presence.
