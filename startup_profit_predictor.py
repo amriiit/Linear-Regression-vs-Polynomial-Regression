@@ -132,6 +132,7 @@ plt.xlabel("Iterations")
 plt.ylabel("Cost")
 plt.title("Linear vs Polynomial Regression")
 plt.legend()
+plt.savefig("images/cost_comparison.png")
 plt.grid(True)
 
 #plotting spend vs profit
@@ -140,6 +141,7 @@ plt.scatter(X_train[:,0],y_train)
 plt.xlabel("Marketing Spend")
 plt.ylabel("Profit")
 plt.title("Marketing spend vs Profit")
+plt.savefig("images/marketing_vs_profit.png")
 plt.grid(True)
 
 
@@ -149,6 +151,7 @@ plt.scatter(X_train[:,1],y_train)
 plt.xlabel("Size")
 plt.ylabel("Profit")
 plt.title("Team size vs Profit")
+plt.savefig("images/team_size_vs_profit.png")
 plt.grid(True)
 
 
@@ -158,6 +161,7 @@ plt.scatter(X_train[:,2],y_train)
 plt.xlabel("Years Active")
 plt.ylabel("Profit")
 plt.title("Years Active vs Profit")
+plt.savefig("images/years_active_vs_profit.png")
 plt.grid(True)
 
 plt.show()
