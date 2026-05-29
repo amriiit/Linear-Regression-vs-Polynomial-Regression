@@ -44,7 +44,7 @@ def normalization(x_train):
 
 #function to compute total cost 
 def compute_cost(x_train,y_train,w,b):
-    m=x_train.shape[0]
+    m=X_train.shape[0]
     total_cost=0
     for i in range(m):
         prediction=np.dot(x_train[i],w)+b
@@ -55,7 +55,7 @@ def compute_cost(x_train,y_train,w,b):
 
 #function to compute total cost 
 def compute_gradient(x_train,y_train,w,b):
-    m,n=x_train.shape
+    m,n=X_poly.shape
     cost=0
     dj_dw=np.zeros((n,))
     dj_db=0
@@ -70,7 +70,7 @@ def compute_gradient(x_train,y_train,w,b):
     return dj_dw,dj_db
 #function to calculate gradient_descent
 def gradient_descent(x_train,y_train,w,b,iterations,alpha):
-    m,n=x_train.shape
+    m,n=X_poly.shape
     cost_history=[]
     for i in range(iterations):
         dj_dw,dj_db=compute_gradient(x_train,y_train,w,b)
@@ -80,58 +80,21 @@ def gradient_descent(x_train,y_train,w,b,iterations,alpha):
         cost_history.append(cost)
     return w,b,cost_history
 
+#initializing the parameters
+w_init=np.zeros(X_poly.shape[1])
+b_init=0
 alpha=0.01
+x_train,mean,sd=normalization(X_poly)
+cost_his=[]
 iterations=1000
-
-#training linear model
-x_linear,mean_linear,sd_linear=normalization(X_train)
-w_linear=np.zeros(X_train.shape[1])
-b_linear=0
-w_linear,b_linear,cost_linear=gradient_descent(
-    x_linear,
-    y_train,
-    w_linear,
-    b_linear,
-    iterations,
-    alpha
-)
-linear_final_cost=cost_linear[-1]
-
-#training polynomial model
-x_poly,mean_poly,sd_poly=normalization(X_poly)
-w_poly=np.zeros(X_poly.shape[1])
-b_poly=0
-w_poly,b_poly,cost_poly=gradient_descent(
-    x_poly,
-    y_train,
-    w_poly,
-    b_poly,
-    iterations,
-    alpha
-)
-poly_final_cost=cost_poly[-1]
-
-#comparing the models
-print("\n===== MODEL COMPARISON =====")
-print("Linear Regression Cost :",linear_final_cost)
-print("Polynomial Regression Cost :",poly_final_cost)
-print("Linear Model Features:",X_train.shape[1])
-print("Polynomial Model Features:",X_poly.shape[1])
-
-
-if poly_final_cost < linear_final_cost:
-    print("\nPolynomial model performs better")
-else:
-    print("\nLinear model performs better")
+w,b,cost_his=gradient_descent(x_train,y_train,w_init,b_init,iterations,alpha)
 
 #plotting the curve for cost vs iterations
 plt.figure()
-plt.plot(cost_linear,label="Linear Regression")
-plt.plot(cost_poly,label="Polynomial Regression")
+plt.plot(cost_his)
 plt.xlabel("Iterations")
-plt.ylabel("Cost")
-plt.title("Linear vs Polynomial Regression")
-plt.legend()
+plt.ylabel("Total Cost")
+plt.title("Cost vs Iterations")
 plt.grid(True)
 
 #plotting spend vs profit
@@ -159,5 +122,25 @@ plt.xlabel("Years Active")
 plt.ylabel("Profit")
 plt.title("Years Active vs Profit")
 plt.grid(True)
+
+
+
+#plotting marketing_spend vs team_size vs cost
+fig = plt.figure()
+ax = fig.add_subplot(   111,   projection='3d')
+ax.scatter(X_train[:,0],X_train[:,1],y_train)
+ax.set_xlabel("Marketing")
+ax.set_ylabel("Team Size")
+ax.set_zlabel("Profit")
+ax.set_title("Marketing vs Team Size vs Profit")
+
+#plotting team_size vs years active vs cost
+fig=plt.figure()
+ax=fig.add_subplot(111,projection='3d')
+ax.scatter(X_train[:,0],X_train[:,2],y_train)
+ax.set_xlabel("Marketing Spend")
+ax.set_ylabel("Years Active")
+ax.set_zlabel("Profit")
+ax.set_title("Marketing Spend vs Years Active vs Profit")
 
 plt.show()
